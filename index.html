@@ -62,35 +62,10 @@
 
         .label { font-size: 10px; font-weight: 600; white-space: nowrap; overflow: hidden; width: 100%; text-overflow: ellipsis; }
 
-        /* ভিজিটর কাউন্টার বক্স */
-        .visitor-section {
-            margin-top: 30px;
-            padding: 15px;
-            background: var(--container-bg);
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .counter-container img {
-            display: block;
-            margin: 5px auto;
-            border-radius: 4px;
-        }
-
-        .counter-container a {
-            display: none; /* অপ্রয়োজনীয় টেক্সট হাইড করা হয়েছে */
-        }
-
-        /* ফুটার ডিজাইন */
-        footer { 
-            background-color: var(--footer-bg); 
-            color: #3dfc03; 
-            text-align: center; 
-            padding: 15px; 
-            font-size: 11px; 
-            font-weight: bold;
-        }
+        footer { background-color: var(--footer-bg); color: #3dfc03; text-align: center; padding: 10px; font-size: 10px; font-weight: bold; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        
+        /* Visitor Counter Link Style Adjustment */
+        footer a { color: #555; text-decoration: none; font-size: 0px; opacity: 0; pointer-events: none; } 
     </style>
 </head>
 <body>
@@ -136,19 +111,17 @@
 
         <h3>My Bookmarks</h3>
         <div id="bookmarkGrid" class="grid"></div>
-
-        <div class="visitor-section">
-            <h3 style="margin-top: 0; margin-bottom: 10px;">Visitor Counter</h3>
-            <div class="counter-container">
-                <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=c53620811992a3b00d66131e8775ccf27c660c14'></script>
-                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1498323/t/1"></script>
-            </div>
-        </div>
     </div>
 
     <footer>
-        Owner By (Cloud Phone BD)
-    </footer>
+        <div>Owner By (Cloud Phone BD)</div>
+        
+        <div style="margin-top: 5px;">
+            <a href='https://www.acadoo.de/leistungen/ghostwriter-doktorarbeit/'>Dissertation schreiben Unterstützung</a>
+            <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=fb445fddfcbcb49accb7fdc209c0b5aba4d68fc8'></script>
+            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1498322/t/1"></script>
+        </div>
+        </footer>
 
     <script>
         window.onload = function() {
@@ -159,20 +132,24 @@
             loadBookmarks();
         };
 
+        // সার্চ বা সরাসরি লিঙ্ক ওপেন করার ফাংশন
         function handleInput() {
             let input = document.getElementById('urlInput').value.trim();
             if (!input) return;
 
+            // যদি ইনপুটে .com, .net বা http থাকে তবে সরাসরি লিঙ্ক ওপেন করবে
             const urlPattern = /^(http|https):\/\/[^ "]+$|.*?\.(com|net|org|edu|gov|io|bd|info|me)$/;
             
             if (urlPattern.test(input)) {
                 let finalUrl = input.startsWith('http') ? input : 'https://' + input;
                 window.location.href = finalUrl;
             } else {
+                // নতুবা গুগল সার্চ করবে
                 window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(input);
             }
         }
 
+        // এন্টার কি প্রেস করলে সার্চ কাজ করবে
         document.getElementById('urlInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') handleInput();
         });
@@ -212,7 +189,7 @@
                     <div class="item">
                         <button class="del-btn" onclick="event.stopPropagation(); removeBookmark(${index})">×</button>
                         <div onclick="window.location.href='https://www.google.com/search?q=${item}'">
-                            <div style="width:48px; height:48px; background:#5f6368; color:white; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:22px; box-shadow: 0 2px 6px rgba(0,0,0 ,0.15);">${item[0].toUpperCase()}</div>
+                            <div style="width:48px; height:48px; background:#5f6368; color:white; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:22px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">${item[0].toUpperCase()}</div>
                             <div class="label">${item}</div>
                         </div>
                     </div>`;
