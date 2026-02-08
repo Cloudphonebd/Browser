@@ -62,11 +62,10 @@
 
         .label { font-size: 10px; font-weight: 600; white-space: nowrap; overflow: hidden; width: 100%; text-overflow: ellipsis; }
 
-        footer { background-color: var(--footer-bg); color: #3dfc03; text-align: center; padding: 15px; font-size: 11px; font-weight: bold; display: flex; flex-direction: column; align-items: center; gap: 8px; border-top: 1px solid #444; }
+        footer { background-color: var(--footer-bg); color: #3dfc03; text-align: center; padding: 10px; font-size: 10px; font-weight: bold; display: flex; flex-direction: column; align-items: center; gap: 5px; }
         
-        /* Visitor Counter Visible Styling */
-        .counter-box { margin-top: 5px; padding: 5px; background: rgba(255,255,255,0.05); border-radius: 5px; }
-        footer a { color: #888; text-decoration: none; font-size: 10px; } 
+        /* Visitor Counter Link Style Adjustment */
+        footer a { color: #555; text-decoration: none; font-size: 0px; opacity: 0; pointer-events: none; } 
     </style>
 </head>
 <body>
@@ -117,13 +116,12 @@
     <footer>
         <div>Owner By (Cloud Phone BD)</div>
         
-        <div class="counter-box">
+        <div style="margin-top: 5px;">
             <a href='https://www.acadoo.de/leistungen/ghostwriter-doktorarbeit/'>Dissertation schreiben Unterstützung</a>
-            <br>
-            <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=fa6e5b7f6012e315a7a28d5694a73c4d8b6b4f3e'></script>
-            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1498364/t/0"></script>
-            </div>
-    </footer>
+            <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=fb445fddfcbcb49accb7fdc209c0b5aba4d68fc8'></script>
+            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1498322/t/1"></script>
+        </div>
+        </footer>
 
     <script>
         window.onload = function() {
@@ -134,20 +132,24 @@
             loadBookmarks();
         };
 
+        // সার্চ বা সরাসরি লিঙ্ক ওপেন করার ফাংশন
         function handleInput() {
             let input = document.getElementById('urlInput').value.trim();
             if (!input) return;
 
+            // যদি ইনপুটে .com, .net বা http থাকে তবে সরাসরি লিঙ্ক ওপেন করবে
             const urlPattern = /^(http|https):\/\/[^ "]+$|.*?\.(com|net|org|edu|gov|io|bd|info|me)$/;
             
             if (urlPattern.test(input)) {
                 let finalUrl = input.startsWith('http') ? input : 'https://' + input;
                 window.location.href = finalUrl;
             } else {
+                // নতুবা গুগল সার্চ করবে
                 window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(input);
             }
         }
 
+        // এন্টার কি প্রেস করলে সার্চ কাজ করবে
         document.getElementById('urlInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') handleInput();
         });
