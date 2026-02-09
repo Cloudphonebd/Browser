@@ -10,7 +10,6 @@
             --container-bg: white;
             --text-color: #333;
             --header-bg: #007bff;
-            --footer-bg: transparent;
             --search-bar-bg: #ffffff;
         }
 
@@ -19,7 +18,6 @@
             --container-bg: #1e1e1e;
             --text-color: #e0e0e0;
             --header-bg: #1a1a1a;
-            --footer-bg: transparent;
             --search-bar-bg: #333;
         }
 
@@ -30,17 +28,14 @@
             background-color: var(--bg-color);
             font-family: sans-serif;
             color: var(--text-color);
-            /* ২.৪ ইঞ্চি ফোনের জন্য ফিক্সড হাইট বাদ দেওয়া হলো */
             min-height: 100vh;
             display: block;
             overflow-x: hidden;
             overflow-y: auto;
         }
 
-        /* স্ট্যাটাস বার */
         .status-bar { background-color: var(--header-bg); color: white; padding: 2px 5px; display: flex; justify-content: space-between; font-size: 10px; }
         
-        /* হেডার */
         header { 
             background-color: var(--header-bg); 
             color: white; 
@@ -64,7 +59,6 @@
             font-size: 10px; 
         }
 
-        /* RGB Animation Header */
         @keyframes glowing-text {
             0% { color: #ff4d4d; text-shadow: 0 0 1px #ff4d4d; }
             25% { color: #ffff4d; text-shadow: 0 0 1px #ffff4d; }
@@ -79,7 +73,6 @@
             display: inline-block;
         }
 
-        /* সার্চ এরিয়া ফিক্স */
         .search-container { 
             padding: 8px 5px; 
             background: var(--container-bg); 
@@ -96,7 +89,6 @@
             width: 100%;
         }
 
-        /* ইনপুট ফিল্ড ছোট করা হয়েছে যাতে বাটন দেখা যায় */
         #urlInput { 
             flex: 1; 
             border: none; 
@@ -105,10 +97,9 @@
             font-size: 12px; 
             outline: none; 
             color: var(--text-color); 
-            min-width: 0; /* ছোট স্ক্রিনে যাতে বাটন ঠেলে না দেয় */
+            min-width: 0;
         }
 
-        /* বাটনগুলো ফিক্সড সাইজ এবং কালারফুল করা হলো */
         .btn-search { 
             background: #007bff; 
             color: white; 
@@ -117,7 +108,7 @@
             width: 28px; 
             height: 28px; 
             margin-right: 5px; 
-            flex-shrink: 0; /* বাটন চ্যাপ্টা হবে না */
+            flex-shrink: 0;
             font-size: 12px;
         }
         
@@ -129,13 +120,12 @@
             width: 28px; 
             height: 28px; 
             font-size: 18px; 
-            flex-shrink: 0; /* বাটন চ্যাপ্টা হবে না */
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* কন্টেন্ট এরিয়া */
         .content { 
             padding: 10px 5px; 
             text-align: center;
@@ -172,8 +162,13 @@
             height: 40px; 
             border-radius: 10px; 
             background: white; 
-            object-fit: contain;
+            object-fit: cover;
             border: 1px solid #ddd;
+        }
+
+        .gemini-logo {
+            background: linear-gradient(45deg, #4285f4, #9b72cb, #d96570);
+            padding: 4px;
         }
 
         .del-btn { 
@@ -189,6 +184,7 @@
             font-size: 10px; 
             line-height: 15px;
             padding: 0;
+            z-index: 5;
         }
 
         .label { 
@@ -201,9 +197,8 @@
             text-overflow: ellipsis; 
         }
 
-        /* ফুটার ফিক্স - এটা এখন সবার নিচে থাকবে এবং ওভারল্যাপ করবে না */
         footer { 
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 10px; 
             text-align: center; 
             width: 100%;
@@ -214,8 +209,6 @@
             animation: glowing-text 2s infinite alternate;
             font-weight: bold;
         }
-        
-        footer a { display: none; } /* অনাকাঙ্ক্ষিত লিঙ্ক হাইড করা হলো */
     </style>
 </head>
 <body>
@@ -232,7 +225,7 @@
 
     <div class="search-container">
         <div class="search-bar">
-            <input type="text" id="urlInput" placeholder="Search...">
+            <input type="text" id="urlInput" placeholder="Search or URL...">
             <button class="btn-search" onclick="handleInput()">🔍</button>
             <button class="btn-add" onclick="addBookmark()">+</button>
         </div>
@@ -250,7 +243,7 @@
                 <div class="label">ChatGPT</div>
             </a>
             <a href="https://gemini.google.com" class="item">
-                <img src="https://cdn-icons-png.flaticon.com/128/15496/15496659.png" class="logo-img">
+                <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304dfad508246b52.svg" class="logo-img gemini-logo">
                 <div class="label">Gemini</div>
             </a>
             <a href="https://m.facebook.com" class="item">
@@ -265,12 +258,6 @@
 
     <footer>
         <div class="footer-text">Developed & Owned By (Cloudphonebd)</div>
-        
-        <div style="display:none;">
-            <a href='https://www.acadoo.de/leistungen/ghostwriter-doktorarbeit/'>Dissertation</a>
-            <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=fb445fddfcbcb49accb7fdc209c0b5aba4d68fc8'></script>
-            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1498322/t/1"></script>
-        </div>
     </footer>
 
     <script>
@@ -282,16 +269,18 @@
             loadBookmarks();
         };
 
+        // নতুন স্মার্ট সার্চ লজিক
         function handleInput() {
             let input = document.getElementById('urlInput').value.trim();
             if (!input) return;
 
-            const urlPattern = /^(http|https):\/\/[^ "]+$|.*?\.(com|net|org|edu|gov|io|bd|info|me)$/;
-            
-            if (urlPattern.test(input)) {
-                let finalUrl = input.startsWith('http') ? input : 'https://' + input;
+            // ১. যদি শুরুতে http বা https থাকে
+            // ২. অথবা যদি লেখার মাঝে ডট (.) থাকে (যেমন google.com)
+            if (input.startsWith('http://') || input.startsWith('https://') || input.includes('.')) {
+                let finalUrl = (input.startsWith('http://') || input.startsWith('https://')) ? input : 'https://' + input;
                 window.location.href = finalUrl;
             } else {
+                // ৩. অন্য সব ক্ষেত্রে গুগল সার্চ হবে
                 window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(input);
             }
         }
