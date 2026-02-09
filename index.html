@@ -62,10 +62,23 @@
 
         .label { font-size: 10px; font-weight: 600; white-space: nowrap; overflow: hidden; width: 100%; text-overflow: ellipsis; }
 
-        footer { background-color: var(--footer-bg); color: #3dfc03; text-align: center; padding: 10px; font-size: 10px; font-weight: bold; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        /* Footer এর কালার পরিবর্তন করা হয়েছে */
+        footer { 
+            background-color: transparent; /* কালো দাগ সরানোর জন্য transparent করা হয়েছে */
+            color: var(--text-color); /* লেখার কালার এডজাস্ট করা হয়েছে */
+            text-align: center; 
+            padding: 10px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 5px; 
+            opacity: 0.6; /* লেখাটা একটু হালকা দেখাবে যাতে দৃষ্টিকটু না লাগে */
+        }
         
         /* Visitor Counter Link Style Adjustment */
-        footer a { color: #555; text-decoration: none; font-size: 0px; opacity: 0; pointer-events: none; } 
+        footer a { color: var(--text-color); text-decoration: none; font-size: 0px; opacity: 0; pointer-events: none; } 
     </style>
 </head>
 <body>
@@ -121,7 +134,7 @@
             <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=fb445fddfcbcb49accb7fdc209c0b5aba4d68fc8'></script>
             <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1498322/t/1"></script>
         </div>
-        </footer>
+    </footer>
 
     <script>
         window.onload = function() {
