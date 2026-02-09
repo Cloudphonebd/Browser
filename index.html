@@ -162,14 +162,11 @@
             height: 40px; 
             border-radius: 10px; 
             background: white; 
-            object-fit: cover;
+            object-fit: contain; /* Changed to contain for better logo fit */
             border: 1px solid #ddd;
         }
 
-        .gemini-logo {
-            background: linear-gradient(45deg, #4285f4, #9b72cb, #d96570);
-            padding: 4px;
-        }
+        /* gemini-logo class removed as we are using the official image directly */
 
         .del-btn { 
             position: absolute; 
@@ -243,7 +240,7 @@
                 <div class="label">ChatGPT</div>
             </a>
             <a href="https://gemini.google.com" class="item">
-                <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304dfad508246b52.svg" class="logo-img gemini-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" class="logo-img" style="padding: 5px;">
                 <div class="label">Gemini</div>
             </a>
             <a href="https://m.facebook.com" class="item">
@@ -269,18 +266,15 @@
             loadBookmarks();
         };
 
-        // নতুন স্মার্ট সার্চ লজিক
+        // Smart Search Logic
         function handleInput() {
             let input = document.getElementById('urlInput').value.trim();
             if (!input) return;
 
-            // ১. যদি শুরুতে http বা https থাকে
-            // ২. অথবা যদি লেখার মাঝে ডট (.) থাকে (যেমন google.com)
             if (input.startsWith('http://') || input.startsWith('https://') || input.includes('.')) {
                 let finalUrl = (input.startsWith('http://') || input.startsWith('https://')) ? input : 'https://' + input;
                 window.location.href = finalUrl;
             } else {
-                // ৩. অন্য সব ক্ষেত্রে গুগল সার্চ হবে
                 window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(input);
             }
         }
